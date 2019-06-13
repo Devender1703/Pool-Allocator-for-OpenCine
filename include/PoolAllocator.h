@@ -19,7 +19,8 @@ class RawPoolAllocator
 public:
 
     RawPoolAllocator(unsigned int frameSize, unsigned int numFrame);
-    
+    ~RawPoolAllocator();
+     
     void AllocateThisChunk(uint8_t* frameData);
     uint8_t* FreeThisChunk();
 };

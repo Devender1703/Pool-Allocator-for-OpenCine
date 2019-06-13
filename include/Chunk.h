@@ -1,8 +1,6 @@
 #ifndef CHUNK_H
 #define CHUNK_H
 
-#include <stdint.h>
-
 enum State
 {
     Free,
@@ -17,7 +15,7 @@ class Chunk
       
 public:
   
-    Chunk(uint8_t* offset);
+    explicit Chunk(uint8_t* offset);
     
     void InitChunks(Chunk* firstChunk, uint8_t* offset, unsigned int numChunk, unsigned int chunkSize);
     

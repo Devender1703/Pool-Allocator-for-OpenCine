@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdint.h>
 #include <cstring>
 
 #include "../include/PoolAllocator.h"
@@ -17,6 +16,14 @@ RawPoolAllocator::RawPoolAllocator(unsigned int frameSize, unsigned int numFrame
     _allocateThisChunk  = _firstChunk;
     
     _firstChunk->InitChunks(_firstChunk, _frameBuffer, _numChunk, _frameSize);
+}
+
+RawPoolAllocator::~RawPoolAllocator()
+{
+    delete []_frameBuffer;
+    delete _firstChunk;
+    delete _allocateThisChunk;
+    delete _freeThisChunk;
 }
 
 void RawPoolAllocator::AllocateThisChunk(uint8_t* frameData)
